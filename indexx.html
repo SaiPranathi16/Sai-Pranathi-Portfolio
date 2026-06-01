@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudasani Sai Pranathi | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        header {
+            padding: 8rem 5% 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            min-height: 80vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        .profile-container {
+            flex: 0 0 300px;
+            height: 300px;
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            background: #e2e8f0; /* Placeholder background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2.section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        section h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-badge {
+            background-color: #f1f5f9;
+            padding: 0.3rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background-color: #eef2ff;
+            color: var(--primary-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Experience & Education Split */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .timeline-item {
+            border-left: 2px solid var(--border-color);
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .timeline-sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            margin-top: 5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            header {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 6rem;
+                gap: 2rem;
+            }
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .split-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .nav-links {
+                display: none; /* Simplification for mini-website presentation */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Sai Pranathi M.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header id="about">
+        <div class="hero-text">
+            <h1>Mudasani Sai Pranathi</h1>[cite: 1]
+            <h2>Computer Science & Engineering Student</h2>[cite: 1]
+            <p>
+                To secure a challenging role that utilizes my skills and experience to drive growth and innovation. Looking to join a dynamic team where I can apply my skills and experience to achieve success.[cite: 1]
+            </p>
+            <a href="mailto:saipranathi67@gmail.com" class="btn">Get In Touch</a>[cite: 1]
+        </div>
+        <div class="profile-container">
+            <!-- Profile Picture Placeholder -->
+            <div class="profile-pic">
+                <span>[ Replace with your profile picture file ]</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Technical Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Toolkit</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Programming Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-badge">Java</span>[cite: 1]
+                    <span class="skill-badge">Python</span>[cite: 1]
+                    <span class="skill-badge">C</span>[cite: 1]
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Core Concepts</h3>
+                <div class="skill-list">
+                    <span class="skill-badge">Object-Oriented Programming (OOP)</span>[cite: 1]
+                    <span class="skill-badge">Data Structures & Algorithms</span>[cite: 1]
+                    <span class="skill-badge">Problem Solving</span>[cite: 1]
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Web & APIs</h3>
+                <div class="skill-list">
+                    <span class="skill-badge">HTML</span>[cite: 1]
+                    <span class="skill-badge">CSS</span>[cite: 1]
+                    <span class="skill-badge">JavaScript</span>[cite: 1]
+                    <span class="skill-badge">REST API basics</span>[cite: 1]
+                    <span class="skill-badge">Flask</span>[cite: 1]
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Databases & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-badge">MySQL</span>[cite: 1]
+                    <span class="skill-badge">Git</span>[cite: 1]
+                    <span class="skill-badge">VS Code</span>[cite: 1]
+                    <span class="skill-badge">Eclipse</span>[cite: 1]
+                    <span class="skill-badge">Power BI</span>[cite: 1]
+                    <span class="skill-badge">Jupyter Notebook</span>[cite: 1]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div>
+                    <div class="project-tags">
+                        <span class="tag">NLP</span>[cite: 1]
+                        <span class="tag">Speech-to-Text</span>[cite: 1]
+                        <span class="tag">Conversational AI</span>[cite: 1]
+                    </div>
+                    <h3>AI-powered Calling Agent</h3>[cite: 1]
+                    <p>Developing an AI-powered calling agent from scratch, focusing on natural language processing (NLP), speech-to-text, and conversational AI to automate customer interactions.</p>[cite: 1]
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-tags">
+                        <span class="tag">Flask</span>[cite: 1]
+                        <span class="tag">Python</span>[cite: 1]
+                        <span class="tag">Biopython</span>[cite: 1]
+                        <span class="tag">Matplotlib</span>[cite: 1]
+                    </div>
+                    <h3>Genome Sequence Analysis Web App</h3>[cite: 1]
+                    <p>Built a web application for DNA sequence analysis with color-coded prediction outputs. Enabled detection of sequence patterns including normal, mutation, and partial matches using Biopython.</p>[cite: 1]
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>[cite: 1]
+                        <span class="tag">Machine Learning</span>[cite: 1]
+                        <span class="tag">NLP</span>[cite: 1]
+                    </div>
+                    <h3>Fake Review Detection</h3>[cite: 1]
+                    <p>Developed a machine learning model to identify fake and genuine reviews using natural language processing techniques. Trained and evaluated ML algorithms to classify reviews with improved accuracy.</p>[cite: 1]
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-tags">
+                        <span class="tag">Arduino UNO</span>[cite: 1]
+                        <span class="tag">Embedded C</span>[cite: 1]
+                        <span class="tag">Sensors</span>[cite: 1]
+                    </div>
+                    <h3>The Smart Walking Stick</h3>[cite: 1]
+                    <p>Developed an assistive smart walking stick for visually impaired users to enhance safety and independent mobility. Enabled water detection through a moisture sensor with instant audio alerts via a voice module.</p>[cite: 1]
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education & Experience Split Grid -->
+    <section id="experience">
+        <div class="split-grid">
+            
+            <!-- Education Column -->
+            <div>
+                <h2 class="section-title">Education</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>[cite: 1]
+                    <div class="timeline-title">G. Narayanamma Institute of Technology and Science (For Women)</div>[cite: 1]
+                    <div class="timeline-sub">BTech in Computer Science and Engineering</div>[cite: 1]
+                    <div class="timeline-sub"><strong>GPA:</strong> 8.75</div>[cite: 1]
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - 2023</div>[cite: 1]
+                    <div class="timeline-title">Narayana Junior College</div>[cite: 1]
+                    <div class="timeline-sub">Telangana State Board of Intermediate Education</div>[cite: 1]
+                    <div class="timeline-sub"><strong>Percentage:</strong> 97.0%</div>[cite: 1]
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2021</div>[cite: 1]
+                    <div class="timeline-title">Narayana High School</div>[cite: 1]
+                    <div class="timeline-sub">State Board of Secondary Education</div>[cite: 1]
+                    <div class="timeline-sub"><strong>Percentage:</strong> 100.0%</div>[cite: 1]
+                </div>
+            </div>
+
+            <!-- Experience & Certs Column -->
+            <div>
+                <h2 class="section-title">Certificates & Experience</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Virtual Internship</div>
+                    <div class="timeline-title">JPMorgan Chase & Co. (Forage)</div>[cite: 1]
+                    <div class="timeline-sub">Software Engineering Virtual Intern</div>
+                    <div class="timeline-sub" style="color: var(--text-muted); font-size: 0.9rem;">Built Spring Boot + Kafka integrations, REST APIs, and H2 database storage.</div>[cite: 1]
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Hackathon</div>
+                    <div class="timeline-title">MERN Hackathon</div>[cite: 1]
+                    <div class="timeline-sub">3-day VAC on Full Stack Development</div>[cite: 1]
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Virtual Experience</div>
+                    <div class="timeline-title">Tata Data Visualization (Forage)</div>[cite: 1]
+                    <div class="timeline-sub">Empowering Business with Effective Insights</div>[cite: 1]
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Leadership & Achievements -->
+    <section>
+        <h2 class="section-title">Leadership & Achievements</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <p>Hosted and led a college-level <strong>Ideathon</strong> in collaboration with ACM-W and AIESEC, managing speakers, a team of 4+ members, and 100+ participants.</p>[cite: 1]
+            </div>
+            <div class="skill-card">
+                <p>Contributed to the success of <strong>Nexora Hack Fest</strong> as part of the ISTE Team, supporting event planning.</p>[cite: 1]
+            </div>
+            <div class="skill-card">
+                <p>Represented as a <strong>Cabinet Minister</strong> in a college-level mock parliament, demonstrating decision-making skills.</p>[cite: 1]
+            </div>
+            <div class="skill-card">
+                <p>Organized and participated in creative and cultural events as part of the <strong>Talantia Club</strong>.</p>[cite: 1]
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="mailto:saipranathi67@gmail.com">Email</a>[cite: 1]
+            <a href="#">LinkedIn</a>
+        </div>
+        <p>&copy; 2026 Mudasani Sai Pranathi. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
